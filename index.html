@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>TCS Time Billdin Detail</title>
+  <link rel="stylesheet" type="text/css" href="https://unpkg.com/chota" />
+  <link rel="stylesheet" type="text/css" href="http://localhost:8080/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <style>
+    .navBtn {
+      display: none;
+    }
+
+    nav>a {
+      margin-right: 5px;
+    }
+
+    form {
+      width: 40%;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="hero is-full-screen">
+      <div class="logo is-center is-vertical-align">
+        <img src="http://localhost:8080/img/tcs_50.png">
+      </div>
+      <p>
+      </p>
+      <nav class="tabs is-center">
+        <a type="button" onclick="ShowHide('EnterHours');">Enter your hours</a>
+        <a type="button" onclick="ShowHide('ListHours');">List your hours</a>
+        <a type="button" onclick="ShowHide('Help');">Help</a>
+      </nav>
+      <div class="navBtn is-center" id="EnterHours" style="border-bottom-color: #222222">
+        <form>
+          <div>
+            <legend>Select a date and load your work hours</legend>
+            <p></p>
+            <legend>I'm</legend>
+            <input id="input__text" type="number" placeholder="Employee Number..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+            <br>
+            <legend>Date</legend>
+            <input id="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+            <br>
+            <legend>Hours</legend>
+            <input type="number" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+            <br>
+            <button class="button primary" style="float:right">Done</button>
+          </div>
+        </form>
+      </div>
+      <div class="navBtn row" id="ListHours">
+        <table style="border-bottom-color: #222222">
+          <br>
+          <p>
+            <h3>Hours already charged</h3>
+          </p>
+          <caption>Your billdin hours</caption>
+          <thead>
+            <tr>
+              <th>Week 1</th>
+              <th>Week 2</th>
+              <th>Week 3</th>
+              <th>Week 4</th>
+            </tr>
+            <tr>
+              <td>01/07/2018 | 8hs</td>
+              <td>02/07/2018 | 8hs</td>
+              <td>03/07/2018 | 8hs</td>
+              <td>04/07/2018 | 8hs</td>
+            </tr>
+          </thead>
+          <tfoot>
+            <tr>
+              <th>Total : 8hs</th>
+              <th>Total : 8hs</th>
+              <th>Total : 8hs</th>
+              <th>Total : 8hs</th>
+            </tr>
+          </tfoot>
+          </tbody>
+        </table>
+      </div>
+      <div class="navBtn" id="Help">prueba 3</div>
+    </div>
+    <!--div class>
+      
+    </div-->
+  </div>
+  <script>flatpickr("#datePicker", {});</script>
+  <script src="http://localhost:8080/js/show-hide.js"></script>
+</body>
+
+</html>
