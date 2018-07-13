@@ -10,6 +10,6 @@ app.use('/css', express.static('css'));
 app.use('/time_web_app', express.static('time_web_app'));
 
 app.get('/', (req, res) => {
-    res.sendFile("C:/Users/mmortara001/curso/time_web_app/index.html");
+    res.sendFile(`${__dirname}/index.html`);
 });
 app.listen(8080, () => console.log('server started at localhost'));
