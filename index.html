@@ -46,13 +46,26 @@
             <input id="input__text" type="number" placeholder="Employee Number..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
             <br>
             <legend>Date</legend>
-            <input id="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+            <input class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
             <br>
             <legend>Hours</legend>
             <input type="number" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
             <br>
-            <button class="button primary" style="float:right">Done</button>
+            <div class="row">
+              <div class="col">
+                <legend>Leave Date</legend>
+                <input class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="">
+                <br>
+              </div>
+              <div class="col">
+                <legend>Hours of Leave</legend>
+                <input type="number" placeholder="Ex: 8" pattern="[A-Za-z\s]+" value="">
+                <br>
+              </div>
+            </div>
           </div>
+          <button class="button primary" style="float:right">Done</button>
+
         </form>
       </div>
       <div class="navBtn row" id="ListHours">
@@ -112,7 +125,7 @@
     </div-->
   </div>
   <script>
-    flatpickr("#datePicker", {});
+    flatpickr(".datePicker", {});
   </script>
   <script src="http://localhost:8080/js/show-hide.js"></script>
 </body>
