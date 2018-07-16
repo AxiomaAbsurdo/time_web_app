@@ -38,12 +38,16 @@
         <a type="button" onclick="ShowHide('Help');">Help</a>
       </nav>
       <div class="navBtn card is-center" id="EnterHours" style="border-bottom-color: #222222; overflow:hidden">
-        <form>
+        <form style="width: 70%;">
           <div>
             <legend>Select a date and load your work hours</legend>
             <p></p>
-            <legend>I'm</legend>
-            <input id="input__text" type="number" placeholder="Employee Number..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+            <div>
+              <legend style="display: inline;">Login in order to proceed...</legend>
+              <button class="button primary" style="display: inline;">Login</button>
+              <!--<legend>I'm</legend>
+              AÑADIR legend con UserName y Employee Number-->
+            </div>
             <br>
             <legend>Date</legend>
             <input class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
