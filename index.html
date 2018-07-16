@@ -44,31 +44,29 @@
             <p></p>
             <div>
               <legend style="display: inline;">Login in order to proceed...</legend>
-              <button class="button primary" style="display: inline;">Login</button>
+              <button class="button primary" style="display: inline-flex;">Login</button>
               <!--<legend>I'm</legend>
               AÑADIR legend con UserName y Employee Number-->
             </div>
             <br>
-            <legend>Date</legend>
-            <input class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
-            <br>
-            <legend>Hours</legend>
-            <input type="number" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
-            <br>
-            <div class="row">
-              <div class="col">
-                <legend>Leave Date</legend>
-                <input class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="">
-                <br>
-              </div>
-              <div class="col">
-                <legend>Hours of Leave</legend>
-                <input type="number" placeholder="Ex: 8" pattern="[A-Za-z\s]+" value="">
-                <br>
-              </div>
+            <div class="col-10" style="display: inline-flex">
+            <div class="card col-6" style="display: block">
+              <legend>Date</legend>
+              <input class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+              <br>
+              <legend>Hours</legend>
+              <input type="number" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+            </div>
+            <div class="card col-6" style="display: block">
+              <legend>Leave Date</legend>
+              <input class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="">
+              <br>
+              <legend>Hours of Leave</legend>
+              <input type="number" placeholder="Ex: 8" pattern="[A-Za-z\s]+" value="">
             </div>
           </div>
-          <button class="button primary" style="float:right">Done</button>
+        </div>
+          <button class="button primary" style="display:flex; margin-left: 55%">Done</button>
 
         </form>
       </div>
