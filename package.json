@@ -1,0 +1,24 @@
+{
+  "name": "time_web_app",
+  "version": "1.0.0",
+  "description": "This is a internal Web app for report work hours.\r Load hours asingned to each day.\r Display the hours you load in a table with the total hours charged per week.\r With a contact form for report some issue.\r --\r Dev. by Matias Mortara.",
+  "main": "main.js",
+  "dependencies": {
+    "express": "^4.16.3",
+    "firebase": "^5.2.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AxiomaAbsurdo/time_web_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/AxiomaAbsurdo/time_web_app/issues"
+  },
+  "homepage": "https://github.com/AxiomaAbsurdo/time_web_app/blob/master/README.md"
+}
