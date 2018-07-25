@@ -15,25 +15,44 @@ var config = {
 };
 firebase.initializeApp(config);
 
-var playersRef = firebase.database().ref("players/");
+//Get Week
+Date.prototype.getWeek = function () {
+    var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+    var dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
+};
 
-playersRef.set ({
-   John: {
-      number: 1,
-      age: 30
-   },
-	
-   Amanda: {
-      number: 2,
-      age: 20
-   }
-});
+function writeHours(uid, date, leave, hours) {
+    // An hour entry.
+    var week = date.getWeek() - 1;
+    var postData = {
+        author: uid,
+        hours: hours,
+        date: date,
+        week: week,
+        leave: leave,
+    };
+
+    // Get a key for a new entry.
+    var hoursKey = firebase.database().ref().child('entries').push().key;
+
+    // Write the new entry's data simultaneously in the entries list and the user's entry list.
+    var updates = {};
+    updates['/entries/' + hoursKey] = postData;
+    updates['/user-entries/' + uid + '/' + hoursKey] = postData;
+
+    return firebase.database().ref().update(updates);
+}
+date = new Date();
+uid = 1529604;
+writeHours(uid, date, false, 8);
 
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
 app.use('/css', express.static('css'));
 app.use('/time_web_app', express.static('time_web_app'));
-console.log(firebase.database().ref('/players'));
 
 app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
