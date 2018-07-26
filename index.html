@@ -38,13 +38,13 @@
         <a type="button" onclick="ShowHide('Help');">Help</a>
       </nav>
       <div class="navBtn card is-center" id="EnterHours" style="border-bottom-color: #222222; overflow:hidden">
-        <form style="width: 70%;">
+        <form action="/submit" method="post" style="width: 70%;">
           <div>
             <legend>Select a date and load your work hours</legend>
             <p></p>
             <div>
-              <legend style="display: inline;">Login in order to proceed...</legend>
-              <button class="button primary" style="display: inline-flex;">Login</button>
+              <legend style="display: inline;">Enter your emplyee number</legend>
+              <input id="uid" type="number" placeholder="Ex: 8" pattern="[A-Za-z\s]+" value="">
               <!--<legend>I'm</legend>
               AÑADIR legend con UserName y Employee Number-->
             </div>
@@ -52,10 +52,10 @@
             <div class="col-10" style="display: inline-flex">
               <div class="card col-6" style="display: block">
                 <legend>Date</legend>
-                <input class="datePicker" data-id="weekSelect" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required >
+                <input class="datePicker" data-id="weekSelect" id="dateEntry" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required >
                 <br>
                 <legend>Hours</legend>
-                <input type="number" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
+                <input type="number" id="hours" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
               </div>
               <div class="card col-6" style="display: block">
                 <legend>Leave Date</legend>
@@ -66,7 +66,7 @@
               </div>
             </div>
           </div>
-          <button class="button primary" style="display:flex; margin-left: 55%">Done</button>
+          <input type="submit" style="display:flex; margin-left: 55%"></input >
 
         </form>
       </div>

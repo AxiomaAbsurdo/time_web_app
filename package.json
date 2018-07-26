@@ -4,6 +4,7 @@
   "description": "This is a internal Web app for report work hours.\r Load hours asingned to each day.\r Display the hours you load in a table with the total hours charged per week.\r With a contact form for report some issue.\r --\r Dev. by Matias Mortara.",
   "main": "main.js",
   "dependencies": {
+    "body-parser": "^1.18.3",
     "express": "^4.16.3",
     "firebase": "^5.2.0"
   },
