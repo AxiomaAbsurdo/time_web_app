@@ -69,7 +69,6 @@ function insertHours(uid, date, leave, hours) {
     return firebase.database().ref().update(updates);
 }
 
-
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
 app.use('/css', express.static('css'));
