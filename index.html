@@ -52,7 +52,8 @@
             <div class="col-10" style="display: inline-flex">
               <div class="card col-6" style="display: block">
                 <legend>Date</legend>
-                <input class="datePicker" data-id="weekSelect" name="dateEntry" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+" minlength="1" value="" required >
+                <input class="datePicker" data-id="weekSelect" name="dateEntry" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+"
+                  minlength="1" value="" required>
                 <br>
                 <legend>Hours</legend>
                 <input type="number" name="hours" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value="" required>
@@ -66,7 +67,7 @@
               </div>
             </div>
           </div>
-          <input type="submit" style="display:flex; margin-left: 55%"></input >
+          <input type="submit" style="display:flex; margin-left: 55%"></input>
 
         </form>
       </div>
@@ -127,9 +128,9 @@
     </div-->
   </div>
   <script>
-    flatpickr(".datePicker",{
-    "weekNumbers":true,
-});
+    flatpickr(".datePicker", {
+      "weekNumbers": true,
+    });
   </script>
   <script src="http://localhost:8080/js/show-hide.js"></script>
 </body>

@@ -17,20 +17,20 @@ var config = {
 firebase.initializeApp(config);
 
 //Get weekStart
-function getWeekStart( logicDate ) {
+function getWeekStart(logicDate) {
     var date = new Date(logicDate);
-    var day = date.getDay();  
-    if( day !== 0 ) 
-        date.setHours(-24 * (day)); 
+    var day = date.getDay();
+    if (day !== 0)
+        date.setHours(-24 * (day));
     return date;
 }
 
 //Get weekEnd
-function getWeekEnd( logicDate ) {
+function getWeekEnd(logicDate) {
     var date = new Date(logicDate);
-    var day = date.getDay();  
-    if( day !== 6 ) 
-        date.setHours(24 * (6 - day)); 
+    var day = date.getDay();
+    if (day !== 6)
+        date.setHours(24 * (6 - day));
     return date;
 }
 
@@ -52,8 +52,8 @@ function insertHours(uid, date, leave, hours) {
     var postData = {
         author: uid,
         hours: hours,
-        weekStart : weekStart,
-        weekEnd : weekEnd,
+        weekStart: weekStart,
+        weekEnd: weekEnd,
         week: week,
         leave: leave,
     };
@@ -80,6 +80,17 @@ app.use(bodyParser.urlencoded({
 
 app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
+    var uid = "1529604"; //TODO waiting for login method
+    var query = firebase.database().ref(`user-entries/${uid}`).orderByKey();
+    query.once("value")
+        .then(function (snapshot) {
+            snapshot.forEach(function (childSnapshot) {
+                var key = childSnapshot.key;
+                var childData = childSnapshot.val();
+
+                console.log(childData)
+            });
+        });
 });
 
 app.post('/', (req, res) => {
@@ -89,5 +100,6 @@ app.post('/', (req, res) => {
     var leave = false;
     var hours = req.body.hours;
     insertHours(uid, date, leave, hours);
-})
+    res.redirect('back');
+});
 app.listen(8080, () => console.log('server started at localhost'));
