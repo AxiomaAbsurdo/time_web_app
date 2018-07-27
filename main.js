@@ -16,15 +16,44 @@ var config = {
 };
 firebase.initializeApp(config);
 
+//Get weekStart
+function getWeekStart( logicDate ) {
+    var date = new Date(logicDate);
+    var day = date.getDay();  
+    if( day !== 0 ) 
+        date.setHours(-24 * (day)); 
+    return date;
+}
 
-//Write hours to DB
-function writeHours(uid, date, leave, hours) {
+//Get weekEnd
+function getWeekEnd( logicDate ) {
+    var date = new Date(logicDate);
+    var day = date.getDay();  
+    if( day !== 6 ) 
+        date.setHours(24 * (6 - day)); 
+    return date;
+}
+
+//Get Week
+Date.prototype.getWeek = function () {
+    var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
+    var dayNum = d.getUTCDay() || 7;
+    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
+};
+
+//Insert hours to DB
+function insertHours(uid, date, leave, hours) {
     // An hour entry.
+    var weekStart = getWeekStart(date).toLocaleDateString("en-US");
+    var weekEnd = getWeekEnd(date).toLocaleDateString("en-US");
     var week = date.getWeek() - 1;
     var postData = {
         author: uid,
         hours: hours,
-        date: date,
+        weekStart : weekStart,
+        weekEnd : weekEnd,
         week: week,
         leave: leave,
     };
@@ -39,14 +68,7 @@ function writeHours(uid, date, leave, hours) {
 
     return firebase.database().ref().update(updates);
 }
-//Get Week
-Date.prototype.getWeek = function () {
-    var d = new Date(Date.UTC(this.getFullYear(), this.getMonth(), this.getDate()));
-    var dayNum = d.getUTCDay() || 7;
-    d.setUTCDate(d.getUTCDate() + 4 - dayNum);
-    var yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
-    return Math.ceil((((d - yearStart) / 86400000) + 1) / 7)
-};
+
 
 app.use('/js', express.static('js'));
 app.use('/img', express.static('img'));
@@ -61,12 +83,12 @@ app.get('/', (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
 
-app.post('/submit', (req, res) => {
+app.post('/', (req, res) => {
     var uid = req.body.uid;
     var date = req.body.dateEntry;
+    var date = new Date(req.body.dateEntry);
     var leave = false;
     var hours = req.body.hours;
-    console.log(req.body)
-    /* writeHours(uid, date, leave, hours); */
+    insertHours(uid, date, leave, hours);
 })
 app.listen(8080, () => console.log('server started at localhost'));
