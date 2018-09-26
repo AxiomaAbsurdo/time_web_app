@@ -1,0 +1,38 @@
+
+
+<div class="card is-center" id="EnterHours" style="border-bottom-color: #222222;">
+<form> <!--action="/" method="post" name="entry" style="width: 70%;">-->
+<div>
+      <legend>Select a date and load your work hours</legend>
+      <p></p>
+      <div>
+        <legend style="display: inline;">Enter your emplyee number</legend>
+        <input name="uid" type="number" placeholder="Ex: 8" pattern="[A-Za-z\s]+" value="">
+        <legend>I'm</legend>
+        <!--AÑADIR legend con UserName y Employee Number-->
+      </div>
+      <br>
+      <div class="col-10" style="display: inline-flex">
+        <div class="card col-6" style="display: block">
+          <legend>Date</legend>
+          <input class="datePicker" data-id="weekSelect" name="dateEntry" type="date" placeholder="Select a date..."
+            pattern="[A-Za-z\s]+" minlength="1" value="" required>
+          <br>
+          <legend>Hours</legend>
+          <input type="number" name="hours" placeholder="number of hours..." pattern="[A-Za-z\s]+" minlength="1" value=""
+            required>
+        </div>
+        <div class="card col-6" style="display: block">
+          <legend>Leave Date</legend>
+          <input name="isLeave" class="datePicker" type="date" placeholder="Select a date..." pattern="[A-Za-z\s]+"
+            minlength="1" value="">
+          <br>
+          <legend>Hours of Leave</legend>
+          <input type="number" placeholder="Ex: 8" pattern="[A-Za-z\s]+" value="">
+        </div>
+      </div>
+    </div>
+    <button type="submit" style="display:flex; margin-left: 55%">Hace Click Gil</button>
+  </form>
+</div>
+
